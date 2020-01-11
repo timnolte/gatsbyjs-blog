@@ -12,9 +12,9 @@ import FeaturedPost from '../components/FeaturedPost';
 import Main from '../components/Main';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
-import post1 from '../posts/blog-post.1.md';
-import post2 from '../posts/blog-post.2.md';
-import post3 from '../posts/blog-post.3.md';
+//import post1 from '../posts/blog-post.1.md';
+//import post2 from '../posts/blog-post.2.md';
+//import post3 from '../posts/blog-post.3.md';
 
 const useStyles = makeStyles(theme => ({
   mainGrid: {
@@ -63,7 +63,7 @@ const featuredPosts = [
   },
 ];
 
-const posts = [post1, post2, post3];
+const posts = [];
 
 const sidebar = {
   title: 'About',
