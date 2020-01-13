@@ -19,7 +19,7 @@ cache:
 
 before_script:
   - npm i -g gatsby-cli
-  - yarn
+  - npm install
 
 script:
   - travis_wait 30 gatsby build
