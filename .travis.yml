@@ -1,0 +1,32 @@
+# Travis CI Configuration File
+#
+# Tell Travis CI which distro to use
+dist: bionic
+
+language: node_js
+
+node_js: node
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - node_modules
+    - public
+    - .cache
+
+before_script:
+  - npm i -g gatsby-cli
+  - yarn
+
+script:
+  - travis_wait 30 gatsby build
+
+deploy:
+  provider: script
+  script: echo 'Deploy to WP site.'
+  skip_cleanup: true
+  on:
+    branch: master
