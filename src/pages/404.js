@@ -3,7 +3,6 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { Link } from 'gatsby-theme-material-ui';
-import ProTip from '../components/ProTip';
 
 function Copyright() {
   return (
@@ -26,7 +25,6 @@ export default function About() {
           Not Found
         </Typography>
         <Link to="/">Go to the main page</Link>
-        <ProTip />
         <Copyright />
       </Box>
     </Container>
