@@ -27,19 +27,19 @@ cache:
     - .cache
 
 before_install:
-  - npm i -g gatsby-cli
+  - npm install -g gatsby-cli --silent
 
 install:
-  - npm install
+  - npm install --silent
 
 script:
   - travis_wait 30 gatsby build
 
 before_deploy:
   - ssh-keyscan -p $SSH_PORT $SSH_HOST >> $HOME/.ssh/known_hosts
-  - base64 --decode <<< "$SSH_KEY_PRIV" >> $HOME/.ssh/gatsbyjs_blog_id_rsa
-  - chmod 600 $HOME/.ssh/gatsbyjs_blog_id_rsa
-  - echo "Host $SSH_HOST\n  IdentityFile ~/.ssh/gatsbyjs_blog_id_rsa" >> $HOME/.ssh/config
+  - base64 --decode <<< "$SSH_KEY_PRIV" >> $HOME/.ssh/id_rsa
+  - chmod 600 $HOME/.ssh/id_rsa
+    #- echo "Host $SSH_HOST\n  IdentityFile ~/.ssh/gatsbyjs_blog_id_rsa" >> $HOME/.ssh/config
 
 deploy:
   provider: script
