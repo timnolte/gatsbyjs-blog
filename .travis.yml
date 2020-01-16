@@ -37,7 +37,8 @@ script:
 
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_fbaa66361ce3_key -iv $encrypted_fbaa66361ce3_iv -in gatsbyjs_blog_id_rsa.enc -out $HOME/.ssh/gatsbyjs_blog_id_rsa -d
-  - echo '$SSH_KEY_PUB' >> $HOME/.ssh/known_hosts
+  - openssl aes-256-cbc -K $encrypted_fbaa66361ce3_key -iv $encrypted_fbaa66361ce3_iv -in gatsbyjs_blog_id_rsa.pub.enc -out $HOME/.ssh/gatsbyjs_blog_id_rsa.pub -d
+  - cat $HOME/.ssh/gatsbyjs_blog_id_rsa.pub >> $HOME/.ssh/known_hosts
 
 deploy:
   provider: script
