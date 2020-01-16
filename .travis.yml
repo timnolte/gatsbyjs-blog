@@ -1,32 +1,46 @@
 # Travis CI Configuration File
 #
-# Tell Travis CI which distro to use
+# Tell Travis CI which distro to use.
 dist: bionic
 
+# Tell Travis CI what languages to use.
 language: node_js
 
+# Specify which version of NodeJS to use.
 node_js: node
 
+# Git clone depth.
+# By default Travis CI clones repositories to a depth of 50 commits.
+git:
+  depth: 1
+
+# Whitelist branches for the "push" build check.
 branches:
   only:
     - master
 
+# What to cache for future builds.
 cache:
   directories:
     - node_modules
     - public
     - .cache
 
-before_script:
+before_install:
   - npm i -g gatsby-cli
+
+install:
   - npm install
 
 script:
   - travis_wait 30 gatsby build
 
+before_deploy:
+  - echo 'Before deploy'
+
 deploy:
   provider: script
-  script: echo 'Deploy to WP site.'
-  skip_cleanup: true
+  script: rsync -rPhczpEt --delete -e 'ssh -p 7822' $TRAVIS_BUILD_DIR/public/ ndigita4@gatsbyjs.timn.me:/home/ndigita4/gatsbyjs-blog/public
+  cleanup: false
   on:
     branch: master
