@@ -35,12 +35,15 @@ install:
 script:
   - travis_wait 30 gatsby build
 
+addons:
+  ssh_known_hosts: gatsbyjs.timn.me:7822
+
 before_deploy:
   - echo 'Before deploy'
 
 deploy:
   provider: script
   script: rsync -rPhczpEt --delete -e 'ssh -p 7822' $TRAVIS_BUILD_DIR/public/ ndigita4@gatsbyjs.timn.me:/home/ndigita4/gatsbyjs-blog/public
-  cleanup: false
+  skip_cleanup: true
   on:
     branch: master
