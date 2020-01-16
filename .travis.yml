@@ -35,8 +35,10 @@ install:
 script:
   - travis_wait 30 gatsby build
 
+addons:
+  ssh_known_hosts: $SSH_HOST:$SSH_PORT
+
 before_deploy:
-  - base64 --decode <<< "$SSH_KEY_PUB" >> $HOME/.ssh/known_hosts
   - base64 --decode <<< "$SSH_KEY_PRIV" >> $HOME/.ssh/gatsbyjs_blog_id_rsa
 
 deploy:
