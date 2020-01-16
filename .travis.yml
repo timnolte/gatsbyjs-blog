@@ -37,7 +37,6 @@ script:
 
 before_deploy:
   - base64 --decode <<< "$SSH_KEY_PUB" >> $HOME/.ssh/known_hosts
-  - cat $HOME/.ssh/gatsbyjs_blog_id_rsa.pub >> $HOME/.ssh/known_hosts
   - base64 --decode <<< "$SSH_KEY_PRIV" >> $HOME/.ssh/gatsbyjs_blog_id_rsa
 
 deploy:
