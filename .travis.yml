@@ -36,12 +36,12 @@ script:
   - travis_wait 30 gatsby build
 
 before_deploy:
+  - openssl aes-256-cbc -K $encrypted_fbaa66361ce3_key -iv $encrypted_fbaa66361ce3_iv -in gatsbyjs_blog_id_rsa.enc -out $HOME/.ssh/gatsbyjs_blog_id_rsa -d
   - echo '$SSH_KEY_PUB' >> $HOME/.ssh/known_hosts
-  - echo '$SSH_KEY_PRIV' >> $HOME/.ssh/gatsbyjs_id_rsa
 
 deploy:
   provider: script
-  script: rsync -rPhczpEt --delete -e 'ssh -p $SSH_PORT -i $HOME/.ssh/gatsbyjs_id_rsa' $TRAVIS_BUILD_DIR/public/ $SSH_USER@$SSH_HOST:/home/$SSH_USER/gatsbyjs-blog/public
+  script: rsync -rPhczpEt --delete -e 'ssh -p $SSH_PORT -i $HOME/.ssh/gatsbyjs_blog_id_rsa' $TRAVIS_BUILD_DIR/public/ $SSH_USER@$SSH_HOST:/home/$SSH_USER/gatsbyjs-blog/public
   skip_cleanup: true
   on:
     branch: master
