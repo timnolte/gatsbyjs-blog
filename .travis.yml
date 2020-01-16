@@ -42,7 +42,7 @@ before_deploy:
 
 deploy:
   provider: script
-  script: rsync -rPhczpEt --delete -e 'ssh -p $SSH_PORT -i $HOME/.ssh/gatsbyjs_blog_id_rsa' $TRAVIS_BUILD_DIR/public/ $SSH_USER@$SSH_HOST:/home/$SSH_USER/gatsbyjs-blog/public
+  script: rsync -rPhczpEt --delete -e "ssh -p $SSH_PORT -i $HOME/.ssh/gatsbyjs_blog_id_rsa" $TRAVIS_BUILD_DIR/public/ $SSH_USER@$SSH_HOST:/home/$SSH_USER/gatsbyjs-blog/public
   skip_cleanup: true
   on:
     branch: master
