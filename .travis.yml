@@ -36,9 +36,9 @@ script:
   - travis_wait 30 gatsby build
 
 before_deploy:
-  - openssl aes-256-cbc -K $encrypted_fbaa66361ce3_key -iv $encrypted_fbaa66361ce3_iv -in gatsbyjs_blog_id_rsa.enc -out $HOME/.ssh/gatsbyjs_blog_id_rsa -d
-  - openssl aes-256-cbc -K $encrypted_fbaa66361ce3_key -iv $encrypted_fbaa66361ce3_iv -in gatsbyjs_blog_id_rsa.pub.enc -out $HOME/.ssh/gatsbyjs_blog_id_rsa.pub -d
+  - base64 --decode <<< "$SSH_KEY_PUB" >> $HOME/.ssh/known_hosts
   - cat $HOME/.ssh/gatsbyjs_blog_id_rsa.pub >> $HOME/.ssh/known_hosts
+  - base64 --decode <<< "$SSH_KEY_PRIV" >> $HOME/.ssh/gatsbyjs_blog_id_rsa
 
 deploy:
   provider: script
