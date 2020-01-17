@@ -39,9 +39,8 @@ before_deploy:
   - ssh-keyscan -p $SSH_PORT $SSH_HOST >> $HOME/.ssh/known_hosts
   - base64 --decode <<< "$SSH_KEY_PRIV" >> $HOME/.ssh/deploy_id_rsa
   - chmod 600 $HOME/.ssh/deploy_id_rsa
-  - echo -e "Host $SSH_HOST
-      IdentityFile $HOME/.ssh/deploy_id_rsa
-    " >> $HOME/.ssh/config
+  - echo -e "Host $SSH_HOST\n
+      IdentityFile $HOME/.ssh/deploy_id_rsa\n" >> $HOME/.ssh/config
 
 deploy:
   provider: script
