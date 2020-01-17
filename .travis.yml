@@ -23,8 +23,6 @@ branches:
 cache:
   directories:
     - node_modules
-    - public
-    - .cache
 
 # before_install:
 #   - npm install -g gatsby-cli --silent
