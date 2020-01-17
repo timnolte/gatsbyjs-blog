@@ -1,20 +1,20 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gatsbyjs-blog",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A material-ui GatsbyJS blog using a headless WordPress backend.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Tim Nolte <tim.nolte@ndigitals.com>",
   "dependencies": {
     "@material-ui/core": "^4.8.3",
     "@material-ui/icons": "^4.5.1",
     "@material-ui/styles": "^4.8.2",
-    "core-js": "^3.6.3",
+    "core-js": "^3.6.4",
     "dotenv": "^8.2.0",
-    "gatsby": "^2.18.21",
+    "gatsby": "^2.18.23",
     "gatsby-image": "^2.2.38",
     "gatsby-plugin-manifest": "^2.2.37",
     "gatsby-plugin-material-ui": "^2.1.6",
-    "gatsby-plugin-offline": "^3.0.31",
+    "gatsby-plugin-offline": "^3.0.32",
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-sharp": "^2.3.13",
     "gatsby-source-filesystem": "^2.1.46",
@@ -27,17 +27,20 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.15.0",
-    "@typescript-eslint/parser": "^2.15.0",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
     "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react": "^7.18.0",
     "prettier": "^1.19.1"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "wordpress",
+    "blog",
+    "material-ui"
   ],
   "license": "MIT",
   "scripts": {

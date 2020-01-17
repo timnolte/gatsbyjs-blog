@@ -36,14 +36,14 @@ script:
   - npm run build
 
 before_deploy:
-  - ssh-keyscan -p 7822 70.32.21.244 >> $HOME/.ssh/known_hosts
+  - ssh-keyscan -p $SSH_PORT 70.32.21.244 >> $HOME/.ssh/known_hosts
   - base64 --decode <<< "$SSH_KEY_PRIV" >> $HOME/.ssh/id_rsa
   - chmod 600 $HOME/.ssh/id_rsa
-    #- echo "Host $SSH_HOST\n  IdentityFile ~/.ssh/gatsbyjs_blog_id_rsa" >> $HOME/.ssh/config
+  - echo "Host 70.32.21.244\n  IdentityFile $HOME/.ssh/id_rsa" >> $HOME/.ssh/config
 
 deploy:
   provider: script
-  script: rsync -rPhczpEt --delete -e "ssh -p 7822" $TRAVIS_BUILD_DIR/public/ $SSH_USER@70.32.21.244:/home/$SSH_USER/gatsbyjs-blog/public
+  script: rsync -rPhczpEt --delete -e "ssh -p $SSH_PORT" $TRAVIS_BUILD_DIR/public/ $SSH_USER@70.32.21.244:/home/$SSH_USER/gatsbyjs-blog/public
   skip_cleanup: true
   on:
     branch: master
