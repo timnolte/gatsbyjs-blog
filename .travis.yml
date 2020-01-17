@@ -37,13 +37,15 @@ script:
 
 before_deploy:
   - ssh-keyscan -p $SSH_PORT $SSH_HOST >> $HOME/.ssh/known_hosts
+  - base64 --decode <<< "$SSH_KEY_PUB" >> $HOME/.ssh/id_rsa.pub
+  - echo $HOME/.ssh/id_rsa.pub
   - base64 --decode <<< "$SSH_KEY_PRIV" >> $HOME/.ssh/id_rsa
   - chmod 600 $HOME/.ssh/id_rsa
     #- echo "Host $SSH_HOST\n  IdentityFile ~/.ssh/gatsbyjs_blog_id_rsa" >> $HOME/.ssh/config
 
 deploy:
   provider: script
-  script: rsync -rPhczpEt --delete -e "ssh -p $SSH_PORT" $TRAVIS_BUILD_DIR/public/ $SSH_USER@$SSH_HOST:/home/$SSH_USER/gatsbyjs-blog/public
+  script: echo 'Deploy via rsync' # rsync -rPhczpEt --delete -e "ssh -p $SSH_PORT" $TRAVIS_BUILD_DIR/public/ $SSH_USER@$SSH_HOST:/home/$SSH_USER/gatsbyjs-blog/public
   skip_cleanup: true
   on:
     branch: master
