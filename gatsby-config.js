@@ -1,8 +1,13 @@
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://gatsbyjs.timn.me`,
     title: `Tim's GatsbyJS Blog`,
     author: `Tim Nolte`,
     description: `What I'm learning through #100DaysOfGatsby`,
+    social: {
+      github: { name: `GitHub`, url: `https://github.com/timnolte` },
+      twitter: { name: `Twitter`, url: `https://twitter.com/tnolte` },
+    },
   },
   plugins: [
     {

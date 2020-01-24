@@ -1,10 +1,12 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import SiteMetadata from '../components/SiteMetadata';
 import Header from '../components/Header';
 import MainFeaturedPost from '../components/MainFeaturedPost';
 import FeaturedPost from '../components/FeaturedPost';
@@ -89,6 +91,7 @@ export default function Index() {
 
   return (
     <React.Fragment>
+      <SiteMetadata />
       <CssBaseline />
       <Container maxWidth="lg">
         <Header title="Tim's GatsbyJS Blog" sections={sections} />
