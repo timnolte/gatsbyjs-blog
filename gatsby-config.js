@@ -1,3 +1,14 @@
+let activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
+
+console.log(`Using environment config: '${activeEnv}'`);
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+});
+
+console.log(`This WordPress Endpoint is used: '${process.env.WORDPRESS_URL}'`);
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://gatsbyjs.timn.me`,
@@ -34,7 +45,14 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    // `gatsby-source-graphql`,
+    //    {
+    //      resolve: `gatsby-source-graphql`,
+    //      options: {
+    //        typeName: `WPGraphQL`,
+    //        fieldName: `wpgraphql`,
+    //        url: `${process.env.WORDPRESS_URL}/graphql`,
+    //      },
+    //    },
     `gatsby-theme-material-ui`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
