@@ -45,16 +45,16 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    //    {
-    //      resolve: `gatsby-source-graphql`,
-    //      options: {
-    //        typeName: `WPGraphQL`,
-    //        fieldName: `wpgraphql`,
-    //        url: `${process.env.WORDPRESS_URL}/graphql`,
-    //      },
-    //    },
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `WPGraphQL`,
+        fieldName: `wpgraphql`,
+        url: `${process.env.WORDPRESS_URL}/graphql`,
+      },
+    },
     `gatsby-theme-material-ui`,
-    `gatsby-transformer-remark`,
+    //    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
   ],
 }
