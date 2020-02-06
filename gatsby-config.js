@@ -11,7 +11,6 @@ console.log(`This WordPress Endpoint is used: '${process.env.WORDPRESS_URL}'`);
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://gatsbyjs.timn.me`,
     title: `Tim's GatsbyJS Blog`,
     author: `Tim Nolte`,
     description: `What I'm learning through #100DaysOfGatsby`,
@@ -19,6 +18,8 @@ module.exports = {
       github: { name: `GitHub`, url: `https://github.com/timnolte` },
       twitter: { name: `Twitter`, url: `https://twitter.com/tnolte` },
     },
+    siteUrl: `${process.env.WORDPRESS_URL}`,
+    wordPressUrl: `${process.env.WORDPRESS_URL}`,
   },
   plugins: [
     {
@@ -48,13 +49,39 @@ module.exports = {
     {
       resolve: `gatsby-source-graphql`,
       options: {
+        // This type will contain remote schema Query type
         typeName: `WPGraphQL`,
+        // The field under which it's accessible
         fieldName: `wpgraphql`,
+        // Url to query from
         url: `${process.env.WORDPRESS_URL}/graphql`,
       },
     },
-    `gatsby-theme-material-ui`,
-    //    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-wpgraphql-inline-images`,
+      options: {
+        wordPressUrl: `${process.env.WORDPRESS_URL}/`,
+        uploadsUrl: `${process.env.WORDPRESS_URL}/wp-content/uploads/`,
+        processPostTypes: [`Page`, `Post`, `CustomPost`],
+        graphqlTypeName: `WPGraphQL`,
+      },
+    },
+    {
+      resolve: `gatsby-theme-material-ui`,
+      options: {
+        pathToTheme: `src/theme.js`,
+        webFontsConfig: {
+          fonts: {
+            google: [
+              {
+                family: `Roboto`,
+                variants: [`100`, `300`, `400`, `500`, `700`, `900`],
+              },
+            ],
+          },
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
   ],
 }

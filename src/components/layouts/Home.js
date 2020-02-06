@@ -1,4 +1,6 @@
 import React from 'react';
+import theme from '../../theme';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import SiteMetadata from '../SiteMetadata';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,18 +18,21 @@ const useStyles = makeStyles(theme => ({
 
 export default function Home({ children }) {
   const classes = useStyles();
+  const metaData = SiteMetadata;
 
   return (
     <React.Fragment>
       <SiteMetadata />
       <CssBaseline />
-      <Container maxWidth="md">
-        <Header title="Tim's GatsbyJS Blog" />
-        <Grid container spacing={5} className={classes.mainGrid}>
-          {children}
-        </Grid>
-      </Container>
-      <Footer title="Footer" description="Something here to give the footer a purpose!" />
+      <ThemeProvider theme={theme}>
+        <Container maxWidth="md">
+          <Header title={metaData.title} />
+          <Grid container spacing={5} className={classes.mainGrid}>
+            {children}
+          </Grid>
+        </Container>
+        <Footer title="Footer" description="Something here to give the footer a purpose!" />
+      </ThemeProvider>
     </React.Fragment>
   );
 }

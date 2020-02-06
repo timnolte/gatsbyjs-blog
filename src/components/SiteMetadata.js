@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 
 import siteIcon from "../images/timnolte.jpg"
 
-const SiteMetadata = ({ pathname, locale }) => {
+const SiteMetadata = ({ pathname = '', locale = '' }) => {
   const {
     site: {
       siteMetadata: { siteUrl, title, author, description, social, },

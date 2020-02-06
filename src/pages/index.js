@@ -1,6 +1,6 @@
 import React from 'react';
+import { graphql } from "gatsby"
 import Layout from '../components/layouts/Home';
-import MainFeaturedPost from '../components/MainFeaturedPost';
 import Main from '../components/Main';
 
 const posts = [
@@ -42,3 +42,4 @@ export default function Index() {
     </React.Fragment>
   );
 }
+
