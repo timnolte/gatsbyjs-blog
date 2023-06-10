@@ -10,7 +10,7 @@
     "@material-ui/styles": "^4.9.0",
     "core-js": "^3.6.4",
     "dotenv": "^8.2.0",
-    "gatsby": "^2.19.10",
+    "gatsby": "^4.25.7",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-manifest": "^2.2.40",
     "gatsby-plugin-material-ui": "^2.1.6",
